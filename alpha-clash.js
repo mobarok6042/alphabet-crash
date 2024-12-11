@@ -15,12 +15,19 @@ function handleKeyBoardKeyUpEvent(event){
     const currentAlphabet = currentAlphabetElement.innerText ;
     const expectedAlphabet = currentAlphabet.toLowerCase();
     if(playerPressed === expectedAlphabet){
-        console.log('that the right key')
         continueGame ();
         removeBackgroundById(expectedAlphabet);
+        const scoreElement = document.getElementById("score");
+        const score = parseInt(scoreElement.innerText);
+        const newScore = score+1 ;
+        scoreElement.innerText = newScore ;
     }
     else{
-        console.log('Ooops,Wrong key')
+        continueGame ();
+        const lifeElement = document.getElementById("life");
+        const life = parseInt(lifeElement.innerText);
+        const newLife = life-1 ;
+        lifeElement.innerText = newLife ;
     };
 }
 document.addEventListener('keyup',handleKeyBoardKeyUpEvent);
@@ -31,9 +38,9 @@ function play(){
     continueGame ();
 }
 
-// document.addEventListener('keydown', function(event) {
-//     if (event.key === 'Enter') {
-//       play();
-//     }
-// });
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      play();
+    }
+});
 

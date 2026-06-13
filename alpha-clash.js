@@ -1,46 +1,55 @@
-
-
-function continueGame (){
-    getRandomAlphabet ();
+function continueGame() {
     const alphabet = getRandomAlphabet();
     const target = document.getElementById("current-alphabet");
-target.innerText = alphabet.toUpperCase();
-
-setBackgroundById (alphabet);
+    target.innerText = alphabet.toUpperCase();
+    setBackgroundById(alphabet);
 }
 
-function handleKeyBoardKeyUpEvent(event){
-    const playerPressed = event.key ;
+function gameOver() {
+    hideElementById('play-ground');
+    showElementById('game-over-screen'); // make sure this element exists in your HTML
+}
+
+function handleKeyBoardKeyUpEvent(event) {
+    const lifeElement = document.getElementById("life");
+    const life = parseInt(lifeElement.innerText);
+
+    // Stop handling input if game is already over
+    if (life <= 0) return;
+
+    const playerPressed = event.key;
     const currentAlphabetElement = document.getElementById("current-alphabet");
-    const currentAlphabet = currentAlphabetElement.innerText ;
+    const currentAlphabet = currentAlphabetElement.innerText;
     const expectedAlphabet = currentAlphabet.toLowerCase();
-    if(playerPressed === expectedAlphabet){
-        continueGame ();
+
+    if (playerPressed === expectedAlphabet) {
         removeBackgroundById(expectedAlphabet);
+        continueGame();
         const scoreElement = document.getElementById("score");
         const score = parseInt(scoreElement.innerText);
-        const newScore = score+1 ;
-        scoreElement.innerText = newScore ;
+        scoreElement.innerText = score + 1;
+    } else {
+        const newLife = life - 1;
+        lifeElement.innerText = newLife;
+
+        if (newLife <= 0) {
+            gameOver();
+            return;
+        }
+        continueGame();
     }
-    else{
-        continueGame ();
-        const lifeElement = document.getElementById("life");
-        const life = parseInt(lifeElement.innerText);
-        const newLife = life-1 ;
-        lifeElement.innerText = newLife ;
-    };
-}
-document.addEventListener('keyup',handleKeyBoardKeyUpEvent);
-
-function play(){
-    addElementById('home-screen');
-    hideElementById('play-ground');
-    continueGame ();
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keyup', handleKeyBoardKeyUpEvent);
+
+function play() {
+    hideElementById('home-screen');
+    showElementById('play-ground');
+    continueGame();
+}
+
+document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
-      play();
+        play();
     }
 });
-

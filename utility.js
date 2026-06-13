@@ -1,32 +1,31 @@
-//coding function to add and remove hidden property
-function addElementById (elementId){
+// Hide element
+function hideElementById(elementId) {
     const element = document.getElementById(elementId);
     element.classList.add('hidden');
 }
 
-function hideElementById (elementId){
-    const element =document.getElementById(elementId);
+// Show element
+function showElementById(elementId) {
+    const element = document.getElementById(elementId);
     element.classList.remove('hidden');
 }
 
-function getRandomAlphabet (){
-    const alphabetString = 'abcdefghikjlmnopqrstuvwxyz';
+// Get a random alphabet
+function getRandomAlphabet() {
+    const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
     const alphabets = alphabetString.split('');
-
-    const randomNumber = Math.random()*25 ;
-    const index = Math.round(randomNumber);
-
-    const alphabet = alphabets[index];
-    return alphabet ;
+    const index = Math.floor(Math.random() * alphabets.length);
+    return alphabets[index];
 }
-//adding or removing background color according to alphabet//
 
-function setBackgroundById (elementId){
+// Highlight keyboard key
+function setBackgroundById(elementId) {
     const element = document.getElementById(elementId);
-    element.classList.add('bg-orange-400');
-};
+    if (element) element.classList.add('bg-orange-400');
+}
 
-function removeBackgroundById (elementId){
+// Remove highlight from keyboard key
+function removeBackgroundById(elementId) {
     const element = document.getElementById(elementId);
-    element.classList.remove('bg-orange-400');
-};
+    if (element) element.classList.remove('bg-orange-400');
+}

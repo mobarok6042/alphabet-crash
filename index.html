@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpha Crash Pro</title>
-    
-<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="shortcut icon" href="images/play.png" type="image/x-icon">
-<link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="images/play.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="font-poppins">
     <main class="min-h-screen bg-[#010313] bg-[url(images/background.png)] bg-no-repeat bg-center">
         <!-- home screen -->
@@ -66,7 +68,7 @@
                         <kbd id="v" class="kbd">v</kbd>
                         <kbd id="b" class="kbd">b</kbd>
                         <kbd id="n" class="kbd">n</kbd>
-                        <kbd id="m" class="kbd">m</kbd>                        
+                        <kbd id="m" class="kbd">m</kbd>
                     </div>
                 </div>
                 <!-- keyboard end -->
@@ -88,13 +90,14 @@
         </section>
         <!-- playground end -->
         <!-- final Score start -->
-        <section class="score flex justify-center items-center min-h-screen hidden">
+        <!-- final Score start -->
+        <section id="game-over-screen" class="score flex justify-center items-center min-h-screen hidden">
             <div class="text-white text-center space-y-6 bg-[#FFFFFF33] p-4 rounded-lg">
                 <h1 class="text-8xl">
                     <span class="font-extrabold">Score:</span>
-                    <span>14</span>
+                    <span id="final-score">0</span>
                 </h1>
-                <button class="btn">Play Again</button>
+                <button onclick="playAgain()" class="btn">Play Again</button>
                 <p>Practice will make you a Pro</p>
             </div>
         </section>
@@ -102,4 +105,5 @@
     <script src="utility.js"></script>
     <script src="alpha-clash.js"></script>
 </body>
+
 </html>
